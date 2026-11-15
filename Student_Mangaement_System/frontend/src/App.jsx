@@ -98,6 +98,8 @@ export default function App() {
       gpa: String(student.gpa),
       enrollmentStatus: student.enrollmentStatus,
     });
+    // Smoothly scroll up to the form on mobile
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function cancelEdit() {
@@ -131,7 +133,7 @@ export default function App() {
         <p>Manage student records, departmental analytics, and enrollment status.</p>
       </header>
 
-      {/* Analytics Summary */}
+      {/* Analytics Summary Cards */}
       <section className="summary-cards">
         <div className="card">
           <h4>TOTAL STUDENTS</h4>
@@ -147,7 +149,7 @@ export default function App() {
         ))}
       </section>
 
-      {/* Feedback Message */}
+      {/* Feedback Notification Banner */}
       {message && (
         <div className={`message-banner ${isError ? "error" : "success"}`} role="status">
           <span>{message}</span>
@@ -155,7 +157,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Student Form */}
+      {/* Student Form Section */}
       <section className="form-card">
         <h2>{editingId ? "Update Student Details" : "Register New Student"}</h2>
         <form onSubmit={handleSubmit}>
@@ -246,47 +248,95 @@ export default function App() {
         </form>
       </section>
 
-      {/* Student Records Table */}
+      {/* Student Records Section */}
       <section className="records-card">
-        <h2>Student Records Directory</h2>
+        <div className="records-header">
+          <h2>Student Records Directory</h2>
+          <span className="record-count">{students.length} Total Enrolled</span>
+        </div>
+
         {students.length === 0 ? (
           <p className="no-records">No students enrolled yet. Add a student using the form above.</p>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Roll No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Department</th>
-                <th>Year</th>
-                <th>GPA</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+          <>
+            {/* Desktop Table View (Hidden on mobile) */}
+            <div className="table-responsive desktop-view">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Year</th>
+                    <th>GPA</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {students.map((student) => (
+                    <tr key={student._id}>
+                      <td><strong>{student.rollNumber}</strong></td>
+                      <td>{student.name}</td>
+                      <td>{student.email}</td>
+                      <td>{student.department}</td>
+                      <td>Year {student.year}</td>
+                      <td><span className="badge-gpa">{Number(student.gpa).toFixed(2)}</span></td>
+                      <td><span className="badge-status">{student.enrollmentStatus}</span></td>
+                      <td>
+                        <button className="btn-sm edit" onClick={() => startEdit(student)}>
+                          Edit
+                        </button>
+                        <button className="btn-sm delete" onClick={() => removeStudent(student._id)}>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Cards View (Visible only on mobile devices) */}
+            <div className="mobile-cards-view">
               {students.map((student) => (
-                <tr key={student._id}>
-                  <td><strong>{student.rollNumber}</strong></td>
-                  <td>{student.name}</td>
-                  <td>{student.email}</td>
-                  <td>{student.department}</td>
-                  <td>Year {student.year}</td>
-                  <td><span className="badge-gpa">{Number(student.gpa).toFixed(2)}</span></td>
-                  <td><span className="badge-status">{student.enrollmentStatus}</span></td>
-                  <td>
-                    <button className="btn-sm edit" onClick={() => startEdit(student)}>
-                      Edit
+                <div className="student-card" key={student._id}>
+                  <div className="student-card-header">
+                    <span className="student-card-roll">{student.rollNumber}</span>
+                    <span className="badge-status">{student.enrollmentStatus}</span>
+                  </div>
+                  <h3 className="student-card-name">{student.name}</h3>
+                  <div className="student-card-details">
+                    <div className="card-detail-item">
+                      <span className="detail-label">Email</span>
+                      <span className="detail-value">{student.email}</span>
+                    </div>
+                    <div className="card-detail-item">
+                      <span className="detail-label">Department</span>
+                      <span className="detail-value">{student.department}</span>
+                    </div>
+                    <div className="card-detail-item">
+                      <span className="detail-label">Year</span>
+                      <span className="detail-value">Year {student.year}</span>
+                    </div>
+                    <div className="card-detail-item">
+                      <span className="detail-label">GPA</span>
+                      <span className="badge-gpa">{Number(student.gpa).toFixed(2)}</span>
+                    </div>
+                  </div>
+                  <div className="student-card-actions">
+                    <button className="btn-mobile edit" onClick={() => startEdit(student)}>
+                      ✏️ Edit
                     </button>
-                    <button className="btn-sm delete" onClick={() => removeStudent(student._id)}>
-                      Delete
+                    <button className="btn-mobile delete" onClick={() => removeStudent(student._id)}>
+                      🗑️ Delete
                     </button>
-                  </td>
-                </tr>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </>
         )}
       </section>
     </main>
