@@ -1,0 +1,225 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+header {
+  border-bottom: 2px solid #eef2f5;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0 0 6px 0;
+  color: #1a365d;
+}
+
+header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+
+.card h4 {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.stat {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2563eb;
+  margin: 0;
+}
+
+.stat-sub {
+  margin: 0;
+  font-size: 13px;
+  color: #475569;
+}
+
+.message-banner {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-banner.success {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.message-banner.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.message-banner button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.form-card, .records-card {
+  margin-bottom: 24px;
+}
+
+.form-card h2, .records-card h2 {
+  font-size: 18px;
+  margin: 0 0 14px 0;
+  color: #1e293b;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+label {
+  display: grid;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #475569;
+}
+
+input, select {
+  padding: 9px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.btn-group {
+  grid-column: span 3;
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+button {
+  padding: 9px 16px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-cancel {
+  background: #94a3b8;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  text-align: left;
+  font-size: 13px;
+}
+
+th {
+  background: #eaf1f7;
+  color: #334155;
+}
+
+.badge-gpa {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.badge-status {
+  background: #dcfce7;
+  color: #166534;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 11px;
+  margin-right: 4px;
+}
+
+.btn-sm.edit {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.btn-sm.delete {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.no-records {
+  color: #64748b;
+  font-style: italic;
+  padding: 12px 0;
+}
+
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+  .btn-group {
+    grid-column: span 1;
+  }
+}
