@@ -2,6 +2,26 @@
 
 A full-stack web application designed for academic record tracking, grade management, and departmental reporting using **React**, **Node.js**, **Express.js**, and **MongoDB Atlas**, deployed to **Render** and **Vercel**.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-success?style=for-the-badge&logo=vercel)](https://student-management-system-one-theta.vercel.app)
+[![Backend API](https://img.shields.io/badge/Backend%20API-Render-informational?style=for-the-badge&logo=render)](https://student-backend-clyq.onrender.com/api/health)
+[![Case Study PDF](https://img.shields.io/badge/Case%20Study-Report%20PDF-red?style=for-the-badge&logo=adobeacrobatreader)](./Student_Management_System_Case_Study_Q5.pdf)
+
+---
+
+## 🌐 Live Deployments
+- **Frontend URL (React SPA):** [https://student-management-system-one-theta.vercel.app](https://student-management-system-one-theta.vercel.app)
+- **Backend API (Express REST API):** [https://student-backend-clyq.onrender.com](https://student-backend-clyq.onrender.com)
+  - Health Check: [https://student-backend-clyq.onrender.com/api/health](https://student-backend-clyq.onrender.com/api/health)
+  - Department Analytics: [https://student-backend-clyq.onrender.com/api/reports/department-summary](https://student-backend-clyq.onrender.com/api/reports/department-summary)
+- **Database:** MongoDB Atlas (M0 Free Tier Cluster)
+
+---
+
+## 📄 Case Study Documentation
+- **Report PDF:** [Student_Management_System_Case_Study_Q5.pdf](./Student_Management_System_Case_Study_Q5.pdf)
+
+---
+
 ## Project Architecture
 - **Backend:** Node.js, Express.js REST API, Mongoose ODM
 - **Database:** MongoDB Atlas (M0 Free Tier Cluster)
@@ -13,7 +33,7 @@ A full-stack web application designed for academic record tracking, grade manage
 
 ## Directory Structure
 ```
-student-management-system/
+case study/
 ├── backend/
 │   ├── .env.example
 │   ├── package.json
@@ -27,6 +47,7 @@ student-management-system/
 │       ├── App.jsx
 │       ├── main.jsx
 │       └── style.css
+├── Student_Management_System_Case_Study_Q5.pdf
 └── README.md
 ```
 
